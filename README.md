@@ -2,7 +2,7 @@
 📋 What's Needed
 Keeping track of everything in a busy canteen can be tough. That's why we've created an easy solution using Python and some clever tricks to help out. Our goal is to make life easier for both the canteen staff and the diners. We want everyone to use our system without any hassle and always know what's happening with their meals.
 
-With our system:
+✏️ With our system:
 Canteen staff can see how many meals have been served in real-time.
 Diners can easily cancel their orders if needed.
 We're using smart techniques to handle all the meal data, keeping everything organized and allowing for easy updates whenever necessary.
