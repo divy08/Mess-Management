@@ -9,9 +9,9 @@ We're using smart techniques to handle all the meal data, keeping everything org
 
 # 💻 Technologies Used
 Python 🐍: We chose Python for its simplicity, versatility, and powerful libraries. <p>
-SQLAlchemy 📊: This tool helps us interact with the database smoothly, making it easy to manage all the data.
-Database Management System 🗄️: We use a relational database (like SQLite, MySQL, or PostgreSQL) to store info about users, meal orders, inventory, and more.
-Web Development 🌐: For web-based systems, we use HTML, CSS, JavaScript, and frameworks like Flask to create a user-friendly interface and strong backend functionality.
+SQLAlchemy 📊: This tool helps us interact with the database smoothly, making it easy to manage all the data. <p>
+Database Management System 🗄️: We use a relational database (like SQLite, MySQL, or PostgreSQL) to store info about users, meal orders, inventory, and more. <p>
+Web Development 🌐: For web-based systems, we use HTML, CSS, JavaScript, and frameworks like Flask to create a user-friendly interface and strong backend functionality. <p>
 
 # 🚀 Steps Used
 📝 Requirement Analysis:
