@@ -26,13 +26,12 @@ class meal(db.Model):
     meal_type = db.Column(db.String(20), nullable=False)  # e.g., breakfast, lunch, dinner
     date = db.Column(db.Date, nullable=False)
 
+class mealh(db.Model):
+    meal_type = db.Column(db.String(20), nullable=False,primary_key=True)
+    Number_of_meals= db.Column(db.Integer, nullable=False)
+
  
 
-class hostelite_meals(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    student_id = db.Column(db.Integer,db.ForeignKey('master.id'),nullable=False)
-    meal_type = db.Column(db.String(20), nullable=False)  # e.g., breakfast, lunch, dinner
-    date = db.Column(db.Date, nullable=False)
     #student = db.relationship('Master', back_populates='meal')
 
 

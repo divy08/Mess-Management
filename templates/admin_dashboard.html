@@ -21,7 +21,7 @@
     <div class="container">
         <div class="sidebar">
             <div class="profile">
-                <img src="{{ url_for('static', filename='admin.jpg')}}" alt="Profile Picture" class="profile-pic">
+                <img src="{{ url_for('static', filename='image1.jpg')}}" alt="Profile Picture" class="profile-pic">
                 <p class="name">Name: {{ user_name }}</p>
                 <form id="logout-form" action="{{ url_for('logout') }}" method="post">
                     <button class="logout-btn" type="submit"><i class="fas fa-sign-out-alt"></i> Logout</button>
@@ -55,8 +55,9 @@
                 </div>
             </div>
             <div class="action-section">
-                <div class="meal-action">
-                    <h2>Update Menu</h2>
+                <div class="menu-view">
+                    <h2 style="color: #f7f8fc;background-color: black;opacity: 0.75;text-align: center;padding: 10px;">Update Menu</h2>
+        
                     <div class="menu">
                         <button type="button" class="submit-btn"s><a href="/view_admin">View/Edit Menu</a></button>
                     </div>

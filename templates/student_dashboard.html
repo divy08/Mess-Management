@@ -6,19 +6,27 @@
     <title>Mess Management System</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style_stud.css')}}">
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <style media="screen">
+        body {
+            background-image: url("{{ url_for('static', filename='img4.jpg')}}");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+        }
+        </style>
 </head>
 <body>
     <div class="container">
         <div class="sidebar">
             <div class="profile">
-                <img href="{{ url_for('static', filename='admin.jpg')}}" alt="Profile Picture" class="profile-pic">
+                <img href="{{ url_for('static', filename='image1.jpg')}}" alt="Profile Picture" class="profile-pic">
                 <p class="name">Name: {{ user_name }}</p>
                 <p class="status">
                     {% if role_id==0 %}
-                        Student: Non - Hostelite
-                    {% elif role_id==2 %}
-                        Student: Hostelite
-                    {% endif %}
+                            Student: Non - Hostelite
+                        {% elif role_id==2 %}
+                            Student: Hostelite
+                        {% endif %}
                 </p>
                 <form id="logout-form" action="{{ url_for('logout') }}" method="post">
                     <button class="logout-btn" type="submit"><i class="fas fa-sign-out-alt"></i> Logout</button>
@@ -65,7 +73,7 @@
             {% if role_id == 2 %}
             <div class="meal-action">
                 <h2>Cancel Meal</h2>
-                <form id="cancel-meal-form" method="post" action="{{ url_for('cancel_meal_hostel') }}">
+                <form id="cancel-meal-form" method="post" action="{{ url_for('cancel_meal_h') }}">
                     <div class="menu">
                         <select id="cancel-meal-select" name="meal_type">
                             <option value="Breakfast">Breakfast</option>

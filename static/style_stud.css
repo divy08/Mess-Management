@@ -12,11 +12,12 @@ body {
 
 .sidebar {
     width: 20%;
-    background: linear-gradient(135deg, #6e8efb, #a777e3);
     padding: 30px 20px;
     box-sizing: border-box;
     color: #fff;
     text-align: center;
+    opacity: 0.75;
+    background: black;
 }
 
 .profile {
@@ -67,18 +68,28 @@ body {
     width: 80%;
     padding: 40px;
     box-sizing: border-box;
-    background-color: #fff;
+    /* background-color: #fff; */
     box-shadow: -5px 0 10px rgba(0,0,0,0.1);
     overflow-y: auto;
 }
 
-.main-content h1 {
+/* .main-content h1 {
     text-align: center;
     background-color: #a777e3;
     padding: 15px;
     color: #fff;
     border-radius: 5px;
     margin-bottom: 30px;
+} */
+.main-content h1 {
+    text-align: center;
+    padding: 15px;
+    color: #fafafa;
+    border-radius: 5px;
+    margin-bottom: 30px;
+    opacity: 0.8;
+    text-shadow: 16px 8px 18px #cf9d1ddb;
+    background-color: black;
 }
 
 .meal-section, .action-section {
@@ -88,23 +99,26 @@ body {
 }
 
 .meal-time, .meal-action {
-    background-color: #fafafa;
+    background-color: #fafafac2;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: 30%;
     text-align: center;
     margin-bottom: 20px;
 }
 
+
 .meal-time h2, .meal-action h2 {
     margin-bottom: 10px;
-    color: #6e8efb;
+    color: rgb(0, 0, 0);
 }
 
 .meal-time p {
     margin-bottom: 20px;
     font-weight: 300;
+    color: black;
+    font-size: medium;
 }
 
 .menu {
@@ -122,6 +136,10 @@ body {
     padding: 10px;
     font-size: 1em;
     text-align: center;
+    font-size: large;
+    color: black;
+    font-family: sans-serif;
+    font-weight: bold;
 }
 
 .menu select {
@@ -157,11 +175,14 @@ body {
 }
 
 /* Apply animation to h2 */
-.moving{
+
+.moving {
     animation: moveText 2s infinite;
     font-family: Arial, sans-serif;
     text-align: center;
     font-size: 2em;
     margin: 0;
     padding: 10px;
+    background: rgb(0 0 0 / 31%);
+    color: #fff;
 }

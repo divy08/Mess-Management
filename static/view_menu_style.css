@@ -42,12 +42,19 @@ table, th, td {
     border: 1px solid #444; /* Table border color */
 }
 
-th, td {
+.menu-table th, .menu-table td {
     padding: 10px;
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+    background-color: #000000d9;
+    
 }
 
-th {
-    background-color: #333; /* Table header background color */
+
+.menu-table th {
+
+    background-color: #000; /* Table header background color */
 }
 
 /* Buttons */
@@ -58,6 +65,7 @@ button {
     border: none;
     cursor: pointer;
     border-radius: 5px;
+    font-size: larger;
 }
 
 button:hover {

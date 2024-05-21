@@ -3,7 +3,7 @@ from flask import Flask, render_template, request, redirect, url_for, flash, ses
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from sqlalchemy import create_engine
-from models import db,Master,meal,menu,hostelite_meals
+from models import db,Master,meal,menu,mealh
 from sqlalchemy import func
 from datetime import date, datetime
 from sqlalchemy.orm import sessionmaker
@@ -63,9 +63,13 @@ def logout():
 def admin_dashboard():
     # Fetch counts for each meal type from the database
     # Fetch counts for each meal type from the database
-    breakfast_count = db.session.query(func.count(meal.id)).filter(meal.meal_type == 'Breakfast').scalar() + db.session.query(func.count(hostelite_meals.id)).filter(hostelite_meals.meal_type == 'Breakfast').scalar()
-    lunch_count = db.session.query(func.count(meal.id)).filter(meal.meal_type == 'Lunch').scalar() + db.session.query(func.count(hostelite_meals.id)).filter(hostelite_meals.meal_type == 'Lunch').scalar() 
-    dinner_count = db.session.query(func.count(meal.id)).filter(meal.meal_type == 'Dinner').scalar() + db.session.query(func.count(hostelite_meals.id)).filter(hostelite_meals.meal_type == 'Dinner').scalar()
+    hostel_b_count = db.session.query(mealh.Number_of_meals).filter_by(meal_type='breakfast').scalar()
+    hostel_l_count = db.session.query(mealh.Number_of_meals).filter_by(meal_type='lunch').scalar()
+    hostel_d_count = db.session.query(mealh.Number_of_meals).filter_by(meal_type='dinner').scalar()
+    print(hostel_b_count)
+    breakfast_count = db.session.query(func.count(meal.id)).filter(meal.meal_type == 'Breakfast').scalar() + hostel_b_count
+    lunch_count = db.session.query(func.count(meal.id)).filter(meal.meal_type == 'Lunch').scalar() + hostel_l_count
+    dinner_count = db.session.query(func.count(meal.id)).filter(meal.meal_type == 'Dinner').scalar() + hostel_d_count
     user_name = session.get('user_name', 'Unknown') 
     print(lunch_count)
     print(dinner_count)
@@ -118,32 +122,6 @@ def select_meal():
             return redirect(url_for('student_dashboard'))
 
 
-        
-@app.route('/cancel_meal_hostel', methods=['POST'])
-def cancel_meal_hostel():
-   
-    if 'id' not in session:
-        return redirect(url_for('signin'))
-
-    meal_type = request.form.get('meal_type')
-    student_id = session['id']
-
-    # Find the meal associated with the student and meal type
-    meal_to_delete = hostelite_meals.query.filter_by(student_id=student_id, meal_type=meal_type, date=date.today()).first()
-    if meal_to_delete:
-        db.session.delete(meal_to_delete)
-        db.session.commit()
-
-        # Update the disabled meals for the current user
-        disabled_meals_key = f'disabledMeals_{student_id}'
-        if disabled_meals_key in session:
-            session[disabled_meals_key].remove(meal_type)
-        
-        flash(f'{meal_type.capitalize()} canceled successfully!', 'success')
-    else:
-        flash(f'Failed to cancel {meal_type.capitalize()}. Meal not found.', 'danger')
-
-    return redirect(url_for('student_dashboard'))
     
         
 @app.route('/cancel_meal', methods=['POST'])
@@ -169,6 +147,41 @@ def cancel_meal():
         flash(f'{meal_type.capitalize()} canceled successfully!', 'success')
     else:
         flash(f'Failed to cancel {meal_type.capitalize()}. Meal not found.', 'danger')
+
+    return redirect(url_for('student_dashboard'))
+
+@app.route('/cancel_meal_h', methods=['POST'])
+def cancel_meal_h():
+    print('Hi Hostelite')
+    if 'id' not in session:
+        return redirect(url_for('signin'))
+
+    meal_type = request.form.get('meal_type')
+    print(meal_type)
+    student_id = session['id']
+    if(meal_type=='Breakfast'):
+    
+            db.session.query(mealh).filter(mealh.meal_type == 'breakfast').update({mealh.Number_of_meals : mealh.Number_of_meals-1})
+            db.session.commit()
+            #return jsonify({'message': 'Meal cancelled successfully'})
+    if(meal_type=='Lunch'):
+            print('I work in breakfast')
+            db.session.query(mealh).filter(mealh.meal_type == 'lunch').update({mealh.Number_of_meals : mealh.Number_of_meals-1})
+            db.session.commit()
+            #return jsonify({'message': 'Meal cancelled successfully'})
+    if(meal_type=='Dinner'):
+            print('I work in dinner')
+            db.session.query(mealh).filter(mealh.meal_type == 'dinner').update({mealh.Number_of_meals : mealh.Number_of_meals-1})
+            db.session.commit()
+            #return jsonify({'message': 'Meal cancelled successfully'})
+    # Find the meal associated with the student and meal type
+    
+        # Update the disabled meals for the current user
+    disabled_meals_key = f'disabledMeals_{student_id}'
+    if disabled_meals_key in session:
+            session[disabled_meals_key].remove(meal_type)
+        
+            flash(f'{meal_type.capitalize()} canceled successfully!', 'success')
 
     return redirect(url_for('student_dashboard'))
 

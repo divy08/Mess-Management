@@ -40,10 +40,22 @@ body {
     font-size: 1.5em;
     font-weight: 500;
 }
-.count-table td {
-    padding: 20px 30px; /* Adjust the padding as needed */
-    align-self: center;
-     text-align: center; /* Center-align text */
+
+    .count-table th, .count-table td {
+        padding: 20px 30px;
+        text-align: center; /* Center-align text horizontally */
+        vertical-align: middle; /* Center-align text vertically */
+        border: 1px solid #ddd; /* Optional: Add border for better visibility */
+        font-size: large;
+    }
+    
+    .count-table th {
+        background-color: #f7f8fc; /* Optional: Add background color to header */
+        font-weight: bold; /* Optional: Make header text bold */
+        font-size: larger;
+    }
+    .count-table td{
+        font-size: large;
     }
 
 .logout-btn {
@@ -99,24 +111,28 @@ body {
 }
 
 .meal-time, .meal-action {
-    background-color: #fafafa;
+    background-color: #fefefe;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: 30%;
     text-align: center;
     margin-bottom: 20px;
+    opacity: 0.6;
 }
+
+
 
 .meal-time h2, .meal-action h2 {
     margin-bottom: 10px;
-    color: #6e8efb;
+    color: #000000eb;
 }
 
 .meal-time p {
     margin-bottom: 20px;
     font-weight: 300;
 }
+
 
 .menu {
     margin-top: 10px;
@@ -150,6 +166,8 @@ body {
     border: none;
     padding: 12px 24px; /* Adjust padding */
     cursor: pointer;
+    font-family: sans-serif;
+    font-size: large;
 }
 
 .cancel-btn {
@@ -160,3 +178,4 @@ body {
     padding: 12px 24px; /* Adjust padding */
     cursor: pointer;
 }
+
